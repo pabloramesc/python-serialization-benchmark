@@ -1,10 +1,7 @@
 # Python Serialization Benchmark
 
-This repository benchmarks various serialization methods in Python, focusing on **Pickle**, **MessagePack**, and **Protobuf**. It compares their performance regarding serialization speed and data size for non-tabular data structures.
-
-## Overview
-
-Serialization converts data structures into storable or transmittable formats. This benchmark identifies the most suitable serialization method based on performance characteristics.
+This tool evaluates the performance of Pickle, MessagePack, and Protobuf serialization methods in Python.
+It benchmarks and compares their serialization speed and data size for non-tabular data structures.
 
 ## Serialization Methods
 

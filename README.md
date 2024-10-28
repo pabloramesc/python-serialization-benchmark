@@ -1,45 +1,38 @@
 # Python Serialization Benchmark
 
-This repository contains a benchmark of various serialization methods in Python, specifically focusing on **Pickle**, **MessagePack**, and **Protobuf**. The goal is to compare their performance in terms of serialization speed and data size for non-tabular data structures.
+This repository benchmarks various serialization methods in Python, focusing on **Pickle**, **MessagePack**, and **Protobuf**. It compares their performance regarding serialization speed and data size for non-tabular data structures.
 
 ## Overview
 
-Serialization is the process of converting a data structure into a format that can be easily stored or transmitted. Different serialization formats have varying performance characteristics and use cases. This benchmark aims to provide insights into which method is best suited for different scenarios.
+Serialization converts data structures into storable or transmittable formats. This benchmark identifies the most suitable serialization method based on performance characteristics.
 
 ## Serialization Methods
 
-This benchmark tests three serialization methods:
+- **Pickle**: Python-specific, easy to use but not very efficient for large datasets.
+- **MessagePack**: Space-efficient binary format compatible with multiple languages.
+- **Protobuf**: Compact, efficient binary format developed by Google for structured data.
 
-- **Pickle**: A Python-specific serialization method that is easy to use but not very efficient for large datasets.
-- **MessagePack**: A binary format that is more space-efficient than Pickle and is compatible with multiple programming languages.
-- **Protobuf**: A compact, efficient binary serialization format developed by Google, suitable for structured data.
+## Benchmark Results
 
-## Results
+| Method       | Time       | Size      |
+|--------------|------------|-----------|
+| Pickle       | 0.037158s  | 279 bytes |
+| MessagePack  | 0.035214s  | 208 bytes |
+| Protobuf     | 0.010459s  | 33 bytes  |
 
-The benchmark results for serialization time and size are as follows:
+Protobuf is the most efficient in terms of both speed and size.
 
-- **Pickle**: 
-  - Time: 0.037158s
-  - Size: 279 bytes
-- **MessagePack**: 
-  - Time: 0.035214s
-  - Size: 208 bytes
-- **Protobuf**: 
-  - Time: 0.010459s
-  - Size: 33 bytes
+## Quickstart
 
-Protobuf stands out as the most efficient in terms of both speed and size.
-
-## Installation
-
-To run the benchmarks, clone this repository and install the required libraries:
+To run the benchmarks, clone this repository and execute the `benchmark.py` script:
 
 ```bash
 git clone https://github.com/yourusername/python-serialization-benchmark.git
 cd python-serialization-benchmark
 pip install -r requirements.txt
+python benchmark.py
 ```
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

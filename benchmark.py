@@ -1,14 +1,18 @@
 """
  Copyright (c) 2024 Pablo Ramirez Escudero
- 
+
  This software is released under the MIT License.
  https://opensource.org/licenses/MIT
 """
 
+import numpy as np
+
+import timeit
+
+import json
 import pickle
 import msgpack
 import person_pb2
-import timeit
 
 # Sample non-tabular data
 data = {
@@ -25,19 +29,22 @@ data = {
         "state": "IL",
         "zip": "62704",
     },
+    "adn": np.random.normal(0.0, 1.0, 100).tolist(),
 }
 
 # Initialize Protobuf data outside the tests
-person = person_pb2.Person(name="Alice", age=30, is_married=True)
+person = person_pb2.Person(**data)
 
-# Add children to Protobuf structure
-child1 = person.children.add()
-child1.name = "Bob"
-child1.age = 5
 
-child2 = person.children.add()
-child2.name = "Charlie"
-child2.age = 3
+# 0. JSON Serialization and Deserialization
+def json_test():
+    # Serialize
+    json_data = json.dumps(data)
+    # Deserialize
+    unjson_data = json.loads(json_data)
+    # Check deserialization correctness
+    assert unjson_data == data, "JSON deserialization failed!"
+    return len(json_data)
 
 
 # 1. Pickle Serialization and Deserialization
@@ -75,11 +82,13 @@ def protobuf_test():
 
 
 # Timing the methods
-pickle_time = timeit.timeit(lambda: pickle_test(), number=10000)
-msgpack_time = timeit.timeit(lambda: msgpack_test(), number=10000)
-protobuf_time = timeit.timeit(lambda: protobuf_test(), number=10000)
+json_time = timeit.timeit(json_test, number=10000)
+pickle_time = timeit.timeit(pickle_test, number=10000)
+msgpack_time = timeit.timeit(msgpack_test, number=10000)
+protobuf_time = timeit.timeit(protobuf_test, number=10000)
 
 # Display Results
+print(f"JSON:        Time: {json_time:.6f}s, Size: {json_test()} bytes")
 print(f"Pickle:      Time: {pickle_time:.6f}s, Size: {pickle_test()} bytes")
 print(f"MessagePack: Time: {msgpack_time:.6f}s, Size: {msgpack_test()} bytes")
 print(f"Protobuf:    Time: {protobuf_time:.6f}s, Size: {protobuf_test()} bytes")

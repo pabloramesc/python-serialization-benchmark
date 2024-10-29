@@ -1,23 +1,25 @@
 # Python Serialization Benchmark
 
-This tool evaluates the performance of Pickle, MessagePack, and Protobuf serialization methods in Python.
+This tool evaluates the performance of JSON, Pickle, MessagePack, and Protobuf serialization methods in Python.
 It benchmarks and compares their serialization speed and data size for non-tabular data structures.
 
 ## Serialization Methods
 
+- **JSON**: Text-based format widely used for data interchange, human-readable but not space-efficient.
 - **Pickle**: Python-specific, easy to use but not very efficient for large datasets.
 - **MessagePack**: Space-efficient binary format compatible with multiple languages.
 - **Protobuf**: Compact, efficient binary format developed by Google for structured data.
 
 ## Benchmark Results
 
-| Method       | Time       | Size      |
-|--------------|------------|-----------|
-| Pickle       | 0.037158s  | 279 bytes |
-| MessagePack  | 0.035214s  | 208 bytes |
-| Protobuf     | 0.010459s  | 33 bytes  |
+| Method       | Time       | Size       |
+|--------------|------------|------------|
+| JSON         | 0.761769s  | 2371 bytes |
+| Pickle       | 0.085776s  | 1189 bytes |
+| MessagePack  | 0.080905s  | 1115 bytes |
+| Protobuf     | 0.027018s  | 928 bytes  |
 
-Protobuf is the most efficient in terms of both speed and size.
+Protobuf is the most efficient in terms of both speed and size, while JSON, although human-readable, is the slowest and largest in size.
 
 ## Quickstart
 

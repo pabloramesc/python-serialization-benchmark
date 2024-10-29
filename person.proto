@@ -1,13 +1,31 @@
+// person.proto
 syntax = "proto3";
 
+package person;
+
+// Define the Person message structure
+message Person {
+    string name = 1;
+    string surname = 2;
+    int32 age = 3;
+    double money = 4;
+    repeated Child children = 8;
+    bool is_married = 5;
+    repeated string hobbies = 6;
+    Address address = 7;
+    repeated double adn = 9;
+}
+
+// Define the Address message structure (nested in Person)
+message Address {
+    string street = 1;
+    string city = 2;
+    string state = 3;
+    string zip = 4;
+}
+
+// Define the Child message structure (nested in Person)
 message Child {
     string name = 1;
     int32 age = 2;
-}
-
-message Person {
-    string name = 1;
-    int32 age = 2;
-    repeated Child children = 3;
-    bool is_married = 4;
 }

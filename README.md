@@ -5,10 +5,10 @@ It benchmarks and compares their serialization speed and data size for non-tabul
 
 ## Serialization Methods
 
-- **JSON**: Text-based format widely used for data interchange, human-readable but not space-efficient.
-- **Pickle**: Python-specific, easy to use but not very efficient for large datasets.
-- **MessagePack**: Space-efficient binary format compatible with multiple languages.
-- **Protobuf**: Compact, efficient binary format developed by Google for structured data.
+- **JSON**: A human-readable text format that’s flexible and widely compatible, though less efficient in terms of space and speed.
+- **Pickle**: A Python-specific serialization format that's easy to use and flexible within Python, but lacks efficiency for large datasets.
+- **MessagePack**: A space-efficient binary format compatible with multiple languages, balancing flexibility and performance.
+- **Protobuf**: A highly efficient binary format for structured data, ideal for predefined schemas, though less flexible for changing data structures.
 
 ## Benchmark Results
 
